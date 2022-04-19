@@ -1,0 +1,27 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: API Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: AuthService
+          uri: http://localhost:8000
+          predicates:
+            - Path= /auth/**
+        - id: TodoListService
+          uri: http://localhost:8001
+          predicates:
+            - Path= /todolist/admin/**
+          filters:
+            - name: AuthFilter
+            - name: RoleFilter
+              args:
+                role: ADMIN
+        - id: TodoListService
+          uri: http://localhost:8001
+          predicates:
+            - Path= /todolist/**
+          filters:
+            - name: AuthFilter
