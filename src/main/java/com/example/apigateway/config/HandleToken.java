@@ -1,6 +1,5 @@
 package com.example.apigateway.config;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -8,7 +7,6 @@ import io.jsonwebtoken.impl.crypto.DefaultJwtSignatureValidator;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
-
 import static io.jsonwebtoken.SignatureAlgorithm.HS256;
 
 public class HandleToken {

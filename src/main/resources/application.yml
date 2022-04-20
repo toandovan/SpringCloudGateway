@@ -7,20 +7,18 @@ spring:
     gateway:
       routes:
         - id: AuthService
-          uri: http://localhost:8000
+          uri: lb://AuthService
           predicates:
             - Path= /auth/**
         - id: TodoListService
-          uri: http://localhost:8001
+          uri: lb://TodoListService
           predicates:
             - Path= /todolist/admin/**
           filters:
             - name: AuthFilter
             - name: RoleFilter
-              args:
-                role: ADMIN
         - id: TodoListService
-          uri: http://localhost:8001
+          uri: lb://TodoListService
           predicates:
             - Path= /todolist/**
           filters:
